@@ -3,9 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsController } from './cats/cats.controller';
 import { LoggerMiddleware } from './logger.middleware';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PhotoModule } from './photo/photo.module';
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forRoot(), PhotoModule],
   controllers: [AppController, CatsController],
   providers: [AppService],
 })
