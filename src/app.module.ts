@@ -5,9 +5,10 @@ import { CatsController } from './cats/cats.controller';
 import { LoggerMiddleware } from './logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PhotoModule } from './photo/photo.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PhotoModule],
+  imports: [TypeOrmModule.forRoot(), PhotoModule, AuthModule],
   controllers: [AppController, CatsController],
   providers: [AppService],
 })
