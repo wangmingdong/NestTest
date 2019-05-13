@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsInt } from 'class-validator';
 
 export class CreatePhotoDto {
     
@@ -8,6 +8,7 @@ export class CreatePhotoDto {
     @IsNotEmpty()
     readonly description: string;
 
+    @IsInt()
     readonly filename: string;
     
     readonly views: number;
