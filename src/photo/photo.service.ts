@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Photo } from './photo.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreatePhotoDto } from './create-photo.dto';
 
 @Injectable()
 export class PhotoService {
@@ -14,15 +15,15 @@ export class PhotoService {
         return await this.photoRepository.find();
     }
 
-    async addOne(): Promise<Photo> {
-        const newPhoto = new Photo();
-        newPhoto.name = `新增${Math.floor(Math.random() * 1000)}`;
-        newPhoto.description = `描述${Math.floor(Math.random() * 1000)}`;
-        newPhoto.filename = `photo${Math.floor(Math.random() * 1000)}.jpg`;
-        newPhoto.views = 0;
-        newPhoto.isPublished = false;
-        // const savePhoto = await this.photoRepository.save(this.photoRepository.create(newPhoto));
-        const savePhoto = await this.photoRepository.save(newPhoto);
+    async addOne(createPhotoDto: CreatePhotoDto): Promise<Photo> {
+        // const newPhoto = new Photo();
+        // newPhoto.name = `新增${Math.floor(Math.random() * 1000)}`;
+        // newPhoto.description = `描述${Math.floor(Math.random() * 1000)}`;
+        // newPhoto.filename = `photo${Math.floor(Math.random() * 1000)}.jpg`;
+        // newPhoto.views = 0;
+        // newPhoto.isPublished = false;
+        const savePhoto = await this.photoRepository.save(this.photoRepository.create(createPhotoDto));
+        // const savePhoto = await this.photoRepository.save(newPhoto);
         return savePhoto;
     }
 

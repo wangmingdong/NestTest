@@ -17,6 +17,6 @@ export class Photo {
     @Column('int')
     views: number;
 
-    @Column()
+    @Column({default: false})
     isPublished: boolean;
 }
